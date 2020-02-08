@@ -1,0 +1,33 @@
+version: '3'
+services:
+  base:
+    build: .
+    container_name: xtrack-base
+    restart: always
+    volumes:
+    - ./xtrack:/home/xtrack
+    stdin_open: true
+    tty: true
+    
+  mongo:
+    image: "mongo"
+    container_name: xtrack-mongo
+    restart: always
+    volumes:
+    - ./mongo_db:/data/db
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: jbRJMEKFRZmYe4NGVUaA
+
+  mongo-express:
+    image: mongo-express
+    container_name: xtrack-mongo-express
+    restart: always
+    ports:
+      - 11234:8081
+    environment:
+      ME_CONFIG_BASICAUTH_USERNAME: morpheus
+      ME_CONFIG_BASICAUTH_PASSWORD: Progress753
+      ME_CONFIG_MONGODB_ADMINUSERNAME: root
+      ME_CONFIG_MONGODB_ADMINPASSWORD: jbRJMEKFRZmYe4NGVUaA
+      ME_CONFIG_OPTIONS_FULLWIDTHLAYOUT: 'true'

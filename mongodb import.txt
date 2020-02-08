@@ -1,0 +1,3 @@
+une fois dans le conteneur, run : 
+
+mongoimport --authenticationDatabase=admin -u root -p jbRJMEKFRZmYe4NGVUaA -d raw -c raw_res_diary raw_res_diary2.json
